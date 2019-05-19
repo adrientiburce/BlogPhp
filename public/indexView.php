@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Mon blog</title>
-    <link href="style.css" rel="stylesheet"/>
+    <link href="../style.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -23,7 +23,7 @@ while ($post = $posts->fetch()) {
             <p>
                 <?= nl2br(htmlspecialchars($post['content'])); ?>
                 <br/>
-                <em><a href="commentaires.php?billet=<?= $post['id']; ?>">Commentaires</a></em>
+                <em><a href="comments/post.php?id=<?= $post['id']; ?>">Commentaires</a></em>
             </p>
     </div>
     <?php
