@@ -1,10 +1,10 @@
 <?php $title = "Mon super blog";
-$style =  '<link rel="stylesheet" href="../style.css">';
+$style =  '<link rel="stylesheet" href="style.css">';
 
 ob_start(); ?>
 
     <h1>Article <?= htmlspecialchars($post['title']); ?></h1>
-<p><a href="../index.php">Retour à la liste des billets</a></p>
+<p><a href="index.php">Retour à la liste des billets</a></p>
 
 <div class="news">
     <h3>
@@ -32,4 +32,4 @@ while ($comment = $comments->fetch())
 
 <?php $content = ob_get_clean();
 
-require '../template.php';
+require './template.php';
