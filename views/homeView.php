@@ -1,7 +1,6 @@
 <?php
 
 $title = "Accueil";
-$style =  '<link rel="stylesheet" href="style.css">';
 
 ob_start(); ?>
 
@@ -21,7 +20,7 @@ while ($post = $posts->fetch()) {
         <p>
             <?= nl2br(htmlspecialchars($post['content'])); ?>
             <br/>
-            <em><a href="index.php?action=post&amp;id=<?= $post['id']; ?>">Commentaires</a></em>
+            <em><a href="./index.php?action=post&amp;id=<?= $post['id']; ?>">Commentaires</a></em>
         </p>
     </div>
     <?php
