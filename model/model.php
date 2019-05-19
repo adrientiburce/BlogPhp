@@ -30,3 +30,11 @@ function getComments($postId)
     $comments->execute(array($postId));
     return $comments;
 }
+
+function addComment($postId, $author, $comment)
+{
+    $database = dbConnect();
+    $newComment = $database->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUE(?, ?, ?, NOW())');
+    $affectedLines = $newComment->execute(array($postId, $author, $comment));
+    return $affectedLines;
+}
