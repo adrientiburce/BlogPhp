@@ -1,19 +1,26 @@
 h1, h3
 {
     text-align:center;
+    color: #6a8fff;
+    text-decoration: underline #4c54ae;
 }
 h3
 {
-    background-color:black;
+    background-color: #404040;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px;
     color:white;
     font-size:0.9em;
     margin-bottom:0px;
 }
 .news p
 {
+    padding: 10px 15px;
     background-color:#CCCCCC;
     margin-top:0px;
 }
+
 .news
 {
     width:70%;

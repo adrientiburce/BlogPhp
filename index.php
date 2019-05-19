@@ -4,6 +4,6 @@ require __DIR__ . '/vendor/autoload.php';
 
 require 'model.php';
 
-$req = getPosts();
+$posts = getPosts();
 
 require_once 'indexView.php';

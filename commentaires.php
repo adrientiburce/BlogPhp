@@ -22,9 +22,9 @@ catch(Exception $e)
 }
 
 // Récupération du billet
-$req = $bdd->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM posts WHERE id = ?');
-$req->execute(array($_GET['billet']));
-$donnees = $req->fetch();
+$posts = $bdd->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM posts WHERE id = ?');
+$posts->execute(array($_GET['billet']));
+$donnees = $posts->fetch();
 ?>
 
 <div class="news">
@@ -43,20 +43,20 @@ $donnees = $req->fetch();
 <h2>Commentaires</h2>
 
 <?php
-$req->closeCursor(); // Important : on libère le curseur pour la prochaine requête
+$posts->closeCursor(); // Important : on libère le curseur pour la prochaine requête
 
 // Récupération des commentaires
-$req = $bdd->prepare('SELECT author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS date_commentaire_fr FROM comments WHERE post_id = ? ORDER BY date_commentaire_fr');
-$req->execute(array($_GET['billet']));
+$posts = $bdd->prepare('SELECT author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS date_commentaire_fr FROM comments WHERE post_id = ? ORDER BY date_commentaire_fr');
+$posts->execute(array($_GET['billet']));
 
-while ($donnees = $req->fetch())
+while ($donnees = $posts->fetch())
 {
     ?>
     <p><strong><?php echo htmlspecialchars($donnees['author']); ?></strong> le <?php echo $donnees['date_commentaire_fr']; ?></p>
     <p><?php echo nl2br(htmlspecialchars($donnees['comment'])); ?></p>
     <?php
 } // Fin de la boucle des commentaires
-$req->closeCursor();
+$posts->closeCursor();
 ?>
 </body>
 </html>

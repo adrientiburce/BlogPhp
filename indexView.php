@@ -12,26 +12,23 @@
 
 
 <?php
-while ($donnees = $req->fetch()) {
+while ($post = $posts->fetch()) {
     ?>
     <div class="news">
-        <h3>
-            <?php echo htmlspecialchars($donnees['title']); ?>
-            <em>le <?php echo $donnees['date_creation_fr']; ?></em>
-        </h3>
+            <h3>
+                <?= htmlspecialchars($post['title']); ?>
+                <em>le <?php echo $post['date_creation_fr']; ?></em>
+            </h3>
 
-        <p>
-            <?php
-            // On affiche le contenu du billet
-            echo nl2br(htmlspecialchars($donnees['content']));
-            ?>
-            <br/>
-            <em><a href="commentaires.php?billet=<?php echo $donnees['id']; ?>">Commentaires</a></em>
-        </p>
+            <p>
+                <?= nl2br(htmlspecialchars($post['content'])); ?>
+                <br/>
+                <em><a href="commentaires.php?billet=<?= $post['id']; ?>">Commentaires</a></em>
+            </p>
     </div>
     <?php
 } // Fin de la boucle des billets
-$req->closeCursor();
+$posts->closeCursor();
 ?>
 </body>
 </html>
